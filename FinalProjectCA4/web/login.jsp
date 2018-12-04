@@ -15,21 +15,49 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-   <body class="text-center">
-    <form class="form-signin">
-      <img class="mb-4" src="C:\Users\Dhruman\Documents\GitHub\CA2\FinalProjectCA4\image" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-  </body>
+    <body>
+        
+          <%
+                // Check if they have landed here because their session expired
+                String sessionExpired = (String) session.getAttribute("sessionExpired");
+                // If so, then display the session expired message to the user
+                if(sessionExpired != null){
+                    // Display the error message to the user
+                    out.println("<b>" + sessionExpired + "</b>");
+                    // Remove the message from the session as it's no longer useful
+                    session.removeAttribute("sessionExpired");
+                }
+            %>
+
+        <div class="row">
+            <div class="col-sm-4"><br><br><br></div> </div>
+
+        <div class="row">
+            <div class="col-sm-4"></div> 
+            <div class="col-sm-4">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <form action="Servlet" method="Post">
+
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                            
+                                <input type="email" name="email"class="form-control"  required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                               
+
+                                <input type="password" name="password" class="form-control"  required>
+                            </div>
+
+                    <center> <button type="submit" class="btn btn-primary" value="login">Submit</button></center>
+                     <input type="hidden" name ="action" value="login" />
+                    </form>
+                    </div>
+                </div></div> </div>
+    </div>
+
+</body>
+
 </html>

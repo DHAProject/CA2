@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/web/login.jsp</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/src/java/CommandFactory/LogoutCommand.java</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/src/java/CommandFactory/LoanCommand.java</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/web/adminHeader.jsp</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/web/header.jsp</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/src/java/servlet/Servlet.java</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/src/java/CommandFactory/CommandFactory.java</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/src/java/CommandFactory/LoginCommand.java</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/web/userHeader.jsp</file>
+            <file>file:/C:/Users/Dhruman/Documents/GitHub/CA2/FinalProjectCA4/web/loan.jsp</file>
+        </group>
     </open-files>
 </project-private>
