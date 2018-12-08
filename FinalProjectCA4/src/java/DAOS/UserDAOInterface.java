@@ -13,20 +13,22 @@ import java.util.List;
  * @author Dhruman
  */
 interface UserDAOInterface {
-     public List<User> getAllUsers();
-    
-  //  public User login (String fname,String lname,String password);
-     
+
+    public List<User> getAllUsers();
+
+    //  public User login (String fname,String lname,String password);
     public User getUserByEmailPassword(String email, String password);
-        
+
     public boolean insertUser(User user);
-    
-    public int getUserStatus (String user_fname,String user_lname);
-    
+
+    public int getUserStatus(String user_fname, String user_lname);
+
     public int disabling(User user);
-    
-    public boolean isUserAvailable(String user_fname,String user_lname,Boolean user_status );
-    
-    public User checkLogin(String user_fname,String user_lname, String user_password);
-    
+
+    public boolean isUserAvailable(String user_fname, String user_lname, Boolean user_status);
+
+    public User checkLogin(String user_fname, String user_lname, String user_password);
+
+    public boolean checkIfUserIsAdmin(String uname);
+
 }

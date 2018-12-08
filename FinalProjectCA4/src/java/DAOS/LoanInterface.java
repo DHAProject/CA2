@@ -19,7 +19,9 @@ public interface LoanInterface {
 
     public boolean insertRowLoan(int Loan_id, int user_id, int book_isbn, Date loan_startdate, Date loan_duedate, Date loan_returningdate);
 
-    public List<Loan> getAllLoanHistory();
+    public List<Loan> getAllLoan();
 
     public List<Loan> getLoanByUserId(String user_id);
+    
+    
 }

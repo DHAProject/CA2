@@ -66,60 +66,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
         return users;
     }
 
-    //   @Override
-    //   public boolean isLogin(String user_fname,String user_lname, String user_password) {
-    //check your username and password is login
-    //      Connection con = null;
-    //      ResultSet rs = null;
-    //      PreparedStatement ps = null;
-    //getdate from login table make loop and match username and password
-    //      ArrayList<User> users = new ArrayList<User>();
-    //      try {
-    //          con = getConnection();
-    //         String query = "SELECT * FROM User  ";
-    //         ps = con.prepareStatement(query);
-    //        rs = ps.executeQuery();
-    //         while (rs.next()) {
-    //           User s = new User( rs.getString("user_fname"),rs.getString("user_lname"), rs.getString("user_password"));
-    //            users.add(s);
-    //         }
-    //       } catch (SQLException e) {
-    //           System.out.println("Exception occured in the isLogin() method");
-    //          e.getMessage();
-    //       } finally {
-    //           try {
-    //              if (rs != null) {
-    //                  rs.close();
-    //                 rs = null;
-    //             }
-    //             if (ps != null) {
-    //                 ps.close();
-    //                 ps = null;
-    //             }
-    //              if (con != null) {
-    //                  freeConnection(con);
-    //              }
-    //          } catch (SQLException e) {
-    //              System.out.println("Exception occured in the finally section of the isLogin() method");
-    //              e.getMessage();
-    //          }
-    //      }
-    //       boolean flag = false;
-    //      for (User s : users) {
-    //          if (s.getUser_fname().equals(user_fname) && s.getUser_lname().equals(user_lname) && s.getUser_password().equals(user_password)) {
-    //              flag = true;
-    //               break;
-    //           }
-    //       }
-//        return flag;
-//    }
-    /**
-     *
-     *
-     *
-     * /**
-     * added user row data in database
-     */
+   
     @Override
     public boolean insertUser(User user) {
 
@@ -362,7 +309,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
         {
             con = this.getConnection();
             
-            String query = "SELECT * FROM user WHERE user_email = ? AND user_password = ?";
+            String query = "SELECT * FROM user WHERE user_email = ? AND user_password = ? ";
             ps = con.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2, password);
@@ -409,56 +356,59 @@ public class UserDAO extends DAO implements UserDAOInterface {
                 System.err.println("A problem occurred when closing down the findUserByUsernamePassword method:\n" + e.getMessage());
             }
         }
-        return u;     // u may be null 
+        return u;    
     }
 
-//    public User login(String fname, String lname, String password) {
-//        Connection con = null;
-//        PreparedStatement ps = null;
-//        ResultSet rs = null;
-//        User u = null;
-//
-//        try {
-//            con = this.getConnection();
-//
-//            String query = "SELECT * FROM members WHERE user_fname = ? , user_lname = ? , user_password = ? ";
-//            ps = con.prepareStatement(query);
-//            ps.setString(1, fname);
-//            ps.setString(2, lname);
-//
-//            rs = ps.executeQuery();
-//            if (rs.next()) {
-//                int user_id = rs.getInt("user_id");
-//                String user_fname = rs.getString("user_fname");
-//                String user_lname = rs.getString("user_lname");
-//                String user_email = rs.getString("user_email");
-//                String user_password = rs.getString("user_password");
-//                String user_phoneno = rs.getString("user_phoneno");
-//                Boolean user_isadmin = rs.getBoolean("user_isadmin");
-//                Boolean user_status = rs.getBoolean("user_status");
-//
-//                u = new User(user_id, user_fname, user_lname, user_email, user_password, user_phoneno, user_isadmin, user_status);
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("An error occurred in the findUserByUsername() method: " + e.getMessage());
-//
-//        } finally {
-//            try {
-//                if (rs != null) {
-//                    rs.close();
-//                }
-//                if (ps != null) {
-//                    ps.close();
-//                }
-//                if (con != null) {
-//                    freeConnection(con);
-//                }
-//
-//            } catch (SQLException e) {
-//                System.out.println("An error occurred when shutting down the findMemberByUsername() method: " + e.getMessage());
-//            }
-//        }
-//        return u;
-//    }
+    @Override
+    public boolean checkIfUserIsAdmin(String uname) {
+        
+        
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean isAdmin = false ;
+        try {
+            con = this.getConnection();
+            
+            String query = "SELECT * FROM user WHERE user_fname = ? AND user_isadmin = True";
+            ps = con.prepareStatement(query);
+            ps.setString(1, uname);
+            
+            rs = ps.executeQuery();
+            if (rs.next()) 
+            {
+                isAdmin = true;
+            }
+        } 
+        catch (SQLException e) 
+        {
+            System.err.println("\tA problem occurred during the checkIfUserIsAdmin method:");
+            System.err.println("\t"+e.getMessage());
+        } 
+        finally 
+        {
+            try 
+            {
+                if (rs != null) 
+                {
+                    rs.close();
+                }
+                if (ps != null) 
+                {
+                    ps.close();
+                }
+                if (con != null) 
+                {
+                    freeConnection(con);
+                }
+            } 
+            catch (SQLException e) 
+            {
+                System.err.println("A problem occurred when closing down the checkIfUserIsAdmin method:\n" + e.getMessage());
+            }
+        }
+        return isAdmin;  
+          }
+
 }

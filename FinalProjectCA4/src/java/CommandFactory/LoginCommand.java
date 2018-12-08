@@ -23,17 +23,18 @@ public class LoginCommand implements Command{
    
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
+       
         if(email != null && password != null && !email.equals("") && !password.equals(""))
         {
             UserDAO uDao = new UserDAO("library_system");
             User u = uDao.getUserByEmailPassword(email, password);
          
             if(u!= null){
-               
+                
                 HttpSession session = request.getSession();
                 session.setAttribute("loginUser", u);
-                forwardToJsp = "userHeader.jsp";
+             
+                forwardToJsp = "home.jsp";
             }
             else{
                 
