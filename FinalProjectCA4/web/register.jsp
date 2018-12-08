@@ -9,140 +9,73 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    try {
-        if (session.getAttribute("login") == null) {
-%>
-<>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Registration </title>
+</head>
+<body class="bg-light">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-<% }
-    if (session.getAttribute("login") != null) {
-        UserDAO checkUser = new UserDAO();
-        User loggedUser = (User) session.getAttribute("login");
-        String userE = loggedUser.getUser_email();
-
-        if (checkUser.getUser_isadmin(userE) == 1) {
-%>
-<>
-
-<% } else { %>
-<>
-
-<%
-            }
-        }
-    } catch (Exception ex) {
-        out.println(ex.getMessage());
-    }
-%>
+    <%@include file = "header.jsp" %>
 
 
-<body>
+    <div class="container">
+        <div class="py-1 text-center">
 
-    <div class="container2">
-        <div class="row main">
-            <div class="panel-heading">
-                <div class="panel-title text-center">
-                    <h3 class="title"> Registration</h3>
-                </div>
-            </div> 
-            <div class="main-login main-center">
-                <form class="form-horizontal" method="post" action="FrontController">
+            <h2>Registration form</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-6"><br><br><br></div> </div>
 
-                    <div class="form-group">
-                        <label  class="cols-sm-2 control-label">FirstName</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="firstname" id="name" required  placeholder="Enter your First Name" pattern="[A-Za-z]+"/>
+        <div class="row">
+            <div class="col-sm-4"></div> 
+            <div class="col-sm-5">
+               
+                    <div class="container">
+                        <form action="Servlet" method="Post">
+                            <div class="form-group">
+                                <label for="Text">First Name:</label>
+                                <input type="text" name="fname"class="form-control"  required autofocus>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label  class="cols-sm-2 control-label">LastName</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="firstname" id="name" required  placeholder="Enter your Last Name" pattern="[A-Za-z]+"/>
+                            <div class="form-group">
+                                <label for="Text">Last Name:</label>
+                                <input type="text" name="lname"class="form-control"  required autofocus>
                             </div>
-                        </div>
-                    </div>
-                    <%--
-                    <div class="form-group">
-                        <label  class="cols-sm-2 control-label">Email Address</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="email" class="form-control" name="email" id="name" required  placeholder="Enter your Email Address" pattern=""/>
-                            </div>
-                        </div>
-                    </div>
-                    --%>
-                    <div class="form-group">
-                                <label for="email">Email Address:</label>
-                            
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
                                 <input type="email" name="email"class="form-control"  required autofocus>
                             </div>
-
-                    <div class="form-group">
-                        <label class="cols-sm-2 control-label">Phone Number</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="phone" id="username"  placeholder="Enter your Phone Number" pattern="[0-9]{3}[0-9]{7}" title="Enter 10 Digit Number ie(08612341212)"/>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" name="password" class="form-control"  required>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="cols-sm-2 control-label">Address Line 1</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-address-book-o fa" aria-hidden="true"></i></span>
-                                <input  class="form-control" name="address1" id="confirm"  placeholder="Enter Your Address"/>
+                            <div class="form-group">
+                                <label for="text">Phone No.</label>
+                                <input type="text" name="phoneno"class="form-control"  required autofocus>
                             </div>
-                        </div>
+
+                            <center> <button type="submit" class="btn btn-primary" value="register">Register</button></center>
+                            <input type="hidden" name ="action" value="register" />
+                        </form>
                     </div>
+                </div></div> </div>
 
-                    <div class="form-group">
-                        <label class="cols-sm-2 control-label">Address Line 2</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-address-book-o fa" aria-hidden="true"></i></span>
-                                <input  class="form-control" name="address2" id="confirm"  placeholder="Enter Your Address"/>
-                            </div>
-                        </div>
-                    </div>
 
-                    
 
-                   
 
-                    <div class="form-group">
-                        <label class="cols-sm-2 control-label">Password</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="confirm"  placeholder="Enter Your Password"/>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="buttonHolder">
-                        <input type="submit" value="Register" class="btn btn-default" />
-                        <!-- Include a hidden field to identify what the user wants to do--> 
-                        <input type="hidden" name ="action" value="register" />
-                    </div>
 
-                    <div class="login-register">
 
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
---%>
+
+
+
+
+
+
+
 </body>
 <%@include file="footer.jsp" %>
 </html>

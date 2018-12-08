@@ -19,7 +19,9 @@ interface UserDAOInterface {
     //  public User login (String fname,String lname,String password);
     public User getUserByEmailPassword(String email, String password);
 
-    public boolean insertUser(User user);
+   
+
+    public boolean registerUser(User u);
 
     public int getUserStatus(String user_fname, String user_lname);
 

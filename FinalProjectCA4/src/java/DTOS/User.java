@@ -20,11 +20,19 @@ public class User {
     private boolean user_isadmin;
     private boolean user_status;
 
-    public User() {
+  
 
+    public User( String user_fname, String user_lname, String user_email, String user_password, String user_phoneno) {
+        this.user_id = -1;
+        this.user_fname = user_fname;
+        this.user_lname = user_lname;
+        this.user_email = user_email;
+        this.user_password = user_password;
+        this.user_phoneno = user_phoneno;
+       
     }
-
-    public User(int user_id, String user_fname, String user_lname, String user_email, String user_password, String user_phoneno, boolean user_isadmin, boolean user_status) {
+    
+    public User( int user_id,String user_fname, String user_lname, String user_email, String user_password, String user_phoneno, boolean user_isadmin, boolean user_status) {
         this.user_id = user_id;
         this.user_fname = user_fname;
         this.user_lname = user_lname;
@@ -34,7 +42,6 @@ public class User {
         this.user_isadmin = user_isadmin;
         this.user_status = user_status;
     }
-
    
 
    

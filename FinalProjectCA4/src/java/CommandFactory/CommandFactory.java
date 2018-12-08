@@ -26,7 +26,7 @@ public class CommandFactory {
                  
                   case "register":
                     // Handle where the user register and insert to database
-                    c = new registerCommand();
+                    c = new RegisterCommand();
                     break;
                     
                         case "logout":

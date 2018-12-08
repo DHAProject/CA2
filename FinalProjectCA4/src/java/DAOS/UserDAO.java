@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,53 +65,6 @@ public class UserDAO extends DAO implements UserDAOInterface {
         }
 
         return users;
-    }
-
-   
-    @Override
-    public boolean insertUser(User user) {
-
-        //add
-        Connection connn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        int isInsert = 0;
-
-        boolean successInsert = false;
-
-        try {
-            connn = this.getConnection();
-
-            String query = "INSERT into users values(?,?,?,?,?,?,?)";
-            ps = connn.prepareStatement(query);
-            ps.setString(1, user.getUser_fname());
-            ps.setString(2, user.getUser_lname());
-            ps.setString(3, user.getUser_email());
-            ps.setString(4, user.getUser_password());
-            ps.setString(5, user.getUser_phoneno());
-            ps.setBoolean(6, user.isUser_isadmin());
-            ps.setBoolean(7, user.isUser_status());
-
-            isInsert = ps.executeUpdate();
-            successInsert = true;
-        } catch (SQLException e) {
-            System.out.println("An error occurred in the addUser() method: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (connn != null) {
-                    freeConnection(connn);
-                }
-            } catch (SQLException e) {
-                System.out.println("An error occurred when shutting down the insertUser() method: " + e.getMessage());
-            }
-        }
-        return successInsert;
     }
 
     /**
@@ -301,114 +255,150 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
     @Override
     public User getUserByEmailPassword(String email, String password) {
-       Connection con = null;
+        Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         User u = null;
-        try 
-        {
+        try {
             con = this.getConnection();
-            
+
             String query = "SELECT * FROM user WHERE user_email = ? AND user_password = ? ";
             ps = con.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2, password);
-            
+
             rs = ps.executeQuery();
-            if (rs.next()) 
-            {
+            if (rs.next()) {
                 int user_id = rs.getInt("user_id");
                 String user_fname = rs.getString("user_fname");
                 String user_lname = rs.getString("user_lname");
                 String user_email = rs.getString("user_email");
                 String user_password = rs.getString("user_password");
                 String user_phoneno = rs.getString("user_phoneno");
-                 boolean user_isadmin = rs.getBoolean("user_isadmin");
+                boolean user_isadmin = rs.getBoolean("user_isadmin");
                 boolean user_status = rs.getBoolean("user_status");
-               
-                u = new User(user_id,user_fname,user_lname,user_email,user_password,user_phoneno,user_isadmin,user_status);
+
+                u = new User(user_id, user_fname, user_lname, user_email, user_password, user_phoneno, user_isadmin, user_status);
             }
-        } 
-        catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             System.err.println("\tA problem occurred during the findUserByUsernamePassword method:");
-            System.err.println("\t"+e.getMessage());
-        } 
-        finally 
-        {
-            try 
-            {
-                if (rs != null) 
-                {
+            System.err.println("\t" + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
                     rs.close();
                 }
-                if (ps != null) 
-                {
+                if (ps != null) {
                     ps.close();
                 }
-                if (con != null) 
-                {
+                if (con != null) {
                     freeConnection(con);
                 }
-            } 
-            catch (SQLException e) 
-            {
+            } catch (SQLException e) {
                 System.err.println("A problem occurred when closing down the findUserByUsernamePassword method:\n" + e.getMessage());
             }
         }
-        return u;    
+        return u;
     }
 
     @Override
     public boolean checkIfUserIsAdmin(String uname) {
-        
-        
-        
+
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        boolean isAdmin = false ;
+        boolean isAdmin = false;
         try {
             con = this.getConnection();
-            
+
             String query = "SELECT * FROM user WHERE user_fname = ? AND user_isadmin = True";
             ps = con.prepareStatement(query);
             ps.setString(1, uname);
-            
+
             rs = ps.executeQuery();
-            if (rs.next()) 
-            {
+            if (rs.next()) {
                 isAdmin = true;
             }
-        } 
-        catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             System.err.println("\tA problem occurred during the checkIfUserIsAdmin method:");
-            System.err.println("\t"+e.getMessage());
-        } 
-        finally 
-        {
-            try 
-            {
-                if (rs != null) 
-                {
+            System.err.println("\t" + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
                     rs.close();
                 }
-                if (ps != null) 
-                {
+                if (ps != null) {
                     ps.close();
                 }
-                if (con != null) 
-                {
+                if (con != null) {
                     freeConnection(con);
                 }
-            } 
-            catch (SQLException e) 
-            {
+            } catch (SQLException e) {
                 System.err.println("A problem occurred when closing down the checkIfUserIsAdmin method:\n" + e.getMessage());
             }
         }
-        return isAdmin;  
-          }
+        return isAdmin;
+    }
+
+    @Override
+    public boolean registerUser(User u ) {
+        
+    
+        Connection con = null;
+        PreparedStatement ps = null;
+        
+        if(getUserByEmailPassword(u.getUser_email(), u.getUser_password()) == null)
+        {
+           
+        try {
+            con = this.getConnection();
+
+            String query = "INSERT INTO user(user_fname,user_lname,user_email, user_password, user_phoneno , user_isadmin, user_status) VALUES (?, ?, ?, ?,?,False,True)";
+
+            // Need to get the id back, so have to tell the database to return the id it generates
+            // That is why we include the Statement.RETURN_GENERATED_KEYS parameter
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, u.getUser_fname());
+            ps.setString(2, u.getUser_lname());
+            ps.setString(3, u.getUser_email());
+            ps.setString(4, u.getUser_password());
+            ps.setString(5, u.getUser_phoneno());
+//            ps.setBoolean(6, u.isUser_isadmin());
+//            ps.setBoolean(7, u.isUser_status());
+
+            // Because this is CHANGING the database, use the executeUpdate method
+           ps.execute();
+            } 
+            catch (SQLException e) 
+            {
+                System.err.println("\tA problem occurred during the addUser method:");
+                System.err.println("\t"+e.getMessage());
+            } 
+            finally 
+            {
+                try 
+                {
+                    if (ps != null) 
+                    {
+                        ps.close();
+                    }
+                    if (con != null) 
+                    {
+                        freeConnection(con);
+                    }
+                } 
+                catch (SQLException e) 
+                {
+                    System.err.println("A problem occurred when closing down the addUser method:\n" + e.getMessage());
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        }
 
 }

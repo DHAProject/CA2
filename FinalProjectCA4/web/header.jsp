@@ -40,7 +40,7 @@
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a href="#" class="btn btn-dark  " role="button" aria-pressed="true">Registration</a>
+                    <a href="register.jsp" class="btn btn-dark  " role="button" aria-pressed="true">Registration</a>
                     <a href="login.jsp" class="btn btn-dark  " role="button" aria-pressed="true">Login</a>
 
                 </form>
