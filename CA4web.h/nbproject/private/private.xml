@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Commands/deleteUserCommand.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Commands/updateDetailsCommand.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/successfulRegistration.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/DTOS/User.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/register.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Commands/CommandFactory.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Servlets/FrontController.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Commands/loginCommand.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Commands/Command.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/DAOS/UserDAOInterface.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/adminLogin.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/DAOS/DAO.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/footer.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/changedDetailsSucces.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/login.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/Commands/registerCommand.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/deleteUser.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/logout.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/src/java/DAOS/UserDAO.java</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/error.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/successfulLogin.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/index.jsp</file>
+            <file>file:/C:/Users/HaiKuo/Documents/NetBeansProjects/CA4web/web/header.jsp</file>
+        </group>
+    </open-files>
+</project-private>
