@@ -42,7 +42,7 @@ public class LoanDAO extends DAO implements LoanInterface {
 
             while (rs.next()) {
                 
-                Loan l = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returningdate"));
+                Loan l = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returndate"));
                 currentLoans.add(l);
             }
         } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class LoanDAO extends DAO implements LoanInterface {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                Loan history = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returningdate"));
+                Loan history = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returndate"));
                 loans.add(history);
             }
         } catch (SQLException e) {
@@ -167,7 +167,7 @@ public class LoanDAO extends DAO implements LoanInterface {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                Loan history = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returningdate"));
+                Loan history = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returndate"));
                 loans.add(history);
             }
         } catch (SQLException e) {

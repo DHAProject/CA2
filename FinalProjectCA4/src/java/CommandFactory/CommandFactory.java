@@ -28,6 +28,10 @@ public class CommandFactory {
                     // Handle where the user wants to login
                     c = new LogoutCommand();
                     break;
+                     case "Loan":
+                    // Handle where the user wants to login
+                    c = new LoanCommand();
+                    break;
          }
         return c;
     }

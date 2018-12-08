@@ -15,7 +15,7 @@ import java.util.Date;
 public class Loan {
 
     // Declaring the fileds from database which we use use in  Loan Table
-    private int Loan_id;
+    private int loan_id;
     private int user_id;
     private int book_isbn;
     private Date loan_startdate;
@@ -29,7 +29,7 @@ public class Loan {
     //parameter constuctor
 
     public Loan(int Loan_id, int user_id, int book_isbn, Date loan_startdate, Date loan_duedate, Date loan_returningdate) {
-        this.Loan_id = Loan_id;
+        this.loan_id = Loan_id;
         this.user_id = user_id;
         this.book_isbn = book_isbn;
         this.loan_startdate = loan_startdate;
@@ -39,11 +39,11 @@ public class Loan {
     //getter and setter methods
 
     public int getLoan_id() {
-        return Loan_id;
+        return loan_id;
     }
 
     public void setLoan_id(int Loan_id) {
-        this.Loan_id = Loan_id;
+        this.loan_id = Loan_id;
     }
 
     public int getUser_id() {
@@ -90,7 +90,7 @@ public class Loan {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.Loan_id;
+        hash = 23 * hash + this.loan_id;
         hash = 23 * hash + this.user_id;
         hash = 23 * hash + this.book_isbn;
         return hash;
@@ -109,7 +109,7 @@ public class Loan {
             return false;
         }
         final Loan other = (Loan) obj;
-        if (this.Loan_id != other.Loan_id) {
+        if (this.loan_id != other.loan_id) {
             return false;
         }
         if (this.user_id != other.user_id) {
@@ -125,7 +125,7 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Loan{" + "Loan_id=" + Loan_id + ", user_id=" + user_id + ", book_isbn=" + book_isbn + ", loan_startdate=" + loan_startdate + ", loan_duedate=" + loan_duedate + ", loan_returningdate=" + loan_returningdate + '}';
+        return "Loan{" + "Loan_id=" + loan_id + ", user_id=" + user_id + ", book_isbn=" + book_isbn + ", loan_startdate=" + loan_startdate + ", loan_duedate=" + loan_duedate + ", loan_returningdate=" + loan_returningdate + '}';
     }
     
 
