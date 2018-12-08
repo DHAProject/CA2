@@ -242,4 +242,51 @@ public class BookDAO extends DAO implements BookDAOInterface {
             
              return rowsAffected;
           }
+          
+     // Programmer-Defined Function by Andrew - Alternatively sorting books alphabetically by name
+     @Override
+     public ArrayList<Book> getAllBooksOrderedByName(String title) {
+         Connection con = null;
+         PreparedStatement ps = null;
+         ResultSet rs = null;
+         ArrayList<Book> book = new ArrayList();
+            
+         try{
+            con = getConnection();
+
+            String query = "SELECT * FROM book ORDER BY title";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery(); 
+            
+            while(rs.next()){
+                Book b = new Book();
+               
+                b.setBook_isbn(rs.getInt("book_isbn"));
+                b.setBook_title(rs.getString("book_title"));
+                b.setBook_author(rs.getString("book_author"));
+                b.setBook_publisher(rs.getString("book_publisher"));
+                b.setBook_description(rs.getString("book_description"));
+                b.setBook_quantity(rs.getInt("book_quantity"));
+                book.add(b);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getAllBooksOrderedByName method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getAllBooksOrderedByName method: " + e.getMessage());
+            }
+        }
+            
+            return book;
+        }
 }
