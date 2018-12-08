@@ -23,6 +23,11 @@ public class CommandFactory {
                     // Handle where the user wants to login
                     c = new LoginCommand();
                     break;
+                 
+                  case "register":
+                    // Handle where the user register and insert to database
+                    c = new registerCommand();
+                    break;
                     
                         case "logout":
                     // Handle where the user wants to login
