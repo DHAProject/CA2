@@ -41,11 +41,11 @@ out.println("User not found. Please try logging in.")
     
     <div class="form-group">
       <label for="loan_startdate">Start Date</label>
-      <input type="text" class="form-control" placeholder="Date" style="width:100%;" size="40">
+      <input type="text" class="form-control" placeholder="Enter today's date" style="width:100%;" size="40">
     </div>
       <div class="form-group">
       <label for="loan_duedate">Due Date</label>
-        <input type="text" class="form-control" placeholder="Date" style="width:100%;" size="40">
+        <input type="text" class="form-control" placeholder="Enter the date 7 days from now" style="width:100%;" size="40">
        </div>
 
     <button type="submit" class="btn btn-default">Submit</button>
