@@ -300,6 +300,42 @@ public class UserDAO extends DAO implements UserDAOInterface {
         }
         return u;
     }
+    
+    
+    
+    public boolean deleteUser(String user_email) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int rowsEffected = 0;
+        boolean success = false;
+
+        try {
+            con = this.getConnection();
+            ps = con.prepareStatement("delete from user where user_email = ?");
+
+            ps.setString(1, user_email);
+            rowsEffected = ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("An error occurred in the deleteOrders() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("An error occurred when shutting down the deleteOrders() method: " + e.getMessage());
+            }
+        }
+        return success;
+    }
+    
 
     @Override
     public boolean checkIfUserIsAdmin(String uname) {
@@ -400,5 +436,9 @@ public class UserDAO extends DAO implements UserDAOInterface {
             return false;
         }
         }
+
+    public boolean getUserByUserEmail(String useremail) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
