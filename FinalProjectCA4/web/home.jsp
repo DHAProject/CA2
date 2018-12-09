@@ -95,7 +95,7 @@
                         <a class="nav-link" href="#">View Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Servlet?action=loan">Loan</a>
+                        <a class="nav-link" href="Servlet?action=ViewLoanUser" name="ViewLoan">ViewLoan</a>
                     </li>
 
                 </ul>

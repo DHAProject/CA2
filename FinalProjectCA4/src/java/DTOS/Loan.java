@@ -20,7 +20,7 @@ public class Loan {
     private int book_isbn;
     private Date loan_startdate;
     private Date loan_duedate;
-    private Date loan_returningdate;
+    private Date loan_returndate;
 
     //default constuctor
     public Loan() {
@@ -28,13 +28,13 @@ public class Loan {
     }
     //parameter constuctor
 
-    public Loan(int Loan_id, int user_id, int book_isbn, Date loan_startdate, Date loan_duedate, Date loan_returningdate) {
+    public Loan(int Loan_id, int user_id, int book_isbn, Date loan_startdate, Date loan_duedate, Date loan_returndate) {
         this.loan_id = Loan_id;
         this.user_id = user_id;
         this.book_isbn = book_isbn;
         this.loan_startdate = loan_startdate;
         this.loan_duedate = loan_duedate;
-        this.loan_returningdate = loan_returningdate;
+        this.loan_returndate = loan_returndate;
     }
     //getter and setter methods
 
@@ -78,12 +78,12 @@ public class Loan {
         this.loan_duedate = loan_duedate;
     }
 
-    public Date getLoan_returningdate() {
-        return loan_returningdate;
+    public Date getLoan_returndate() {
+        return loan_returndate;
     }
 
-    public void setLoan_returningdate(Date loan_returningdate) {
-        this.loan_returningdate = loan_returningdate;
+    public void setLoan_returndate(Date loan_returndate) {
+        this.loan_returndate = loan_returndate;
     }
 
     // hascode method in this method going to search for user id and loand id adn book isbn number
@@ -125,7 +125,7 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Loan{" + "Loan_id=" + loan_id + ", user_id=" + user_id + ", book_isbn=" + book_isbn + ", loan_startdate=" + loan_startdate + ", loan_duedate=" + loan_duedate + ", loan_returningdate=" + loan_returningdate + '}';
+        return "Loan{" + "Loan_id=" + loan_id + ", user_id=" + user_id + ", book_isbn=" + book_isbn + ", loan_startdate=" + loan_startdate + ", loan_duedate=" + loan_duedate + ", loan_returningdate=" + loan_returndate + '}';
     }
     
 

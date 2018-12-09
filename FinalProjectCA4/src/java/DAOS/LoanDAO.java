@@ -85,7 +85,7 @@ public class LoanDAO extends DAO implements LoanInterface {
             ps.setInt(3, ln1.getBook_isbn());
             ps.setDate(4, (java.sql.Date) ln1.getLoan_startdate());
             ps.setDate(5, (java.sql.Date) ln1.getLoan_duedate());
-            ps.setDate(6, (java.sql.Date) ln1.getLoan_returningdate());
+            ps.setDate(6, (java.sql.Date) ln1.getLoan_returndate());
 
             
             rs = ps.executeQuery();

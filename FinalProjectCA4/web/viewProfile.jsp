@@ -14,8 +14,8 @@
 
 <h1>Welcome To Your Profile</h1>
 <%
-    User logedUser = (User) session.getAttribute("login");
-    Address logedAdd = (Address) session.getAttribute("login");
+    User logedUser = (User) session.getAttribute("loginUser");
+    Address logedAdd = (Address) session.getAttribute("loginUser");
 
     String userfname = logedUser.getUser_fname();
     String userlname = logedUser.getUser_lname();

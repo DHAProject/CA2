@@ -38,9 +38,9 @@ public class CommandFactory {
                     // Handle where the user wants to login
                     c = new LogoutCommand();
                     break;
-                     case "Loan":
+                     case "ViewLoanUser":
                     // Handle where the user wants to login
-                    c = new LoanCommand();
+                    c = new ViewLoanCommand();
                     break;
          }
         return c;

@@ -4,8 +4,7 @@
     Author     : HaiKuo
 --%>
 
-<%@page import="DTOS.User"%>
-<%@page import="DAOS.UserDAO"%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -33,49 +32,38 @@
         <div class="row">
             <div class="col-sm-4"></div> 
             <div class="col-sm-5">
-               
-                    <div class="container">
-                        <form action="Servlet" method="Post">
-                            <div class="form-group">
-                                <label for="Text">First Name:</label>
-                                <input type="text" name="fname"class="form-control"  required autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label for="Text">Last Name:</label>
-                                <input type="text" name="lname"class="form-control"  required autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email address:</label>
-                                <input type="email" name="email"class="form-control"  required autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd">Password:</label>
-                                <input type="password" name="password" class="form-control"  required>
-                            </div>
-                            <div class="form-group">
-                                <label for="text">Phone No.</label>
-                                <input type="text" name="phoneno"class="form-control"  required autofocus>
-                            </div>
 
-                            <center> <button type="submit" class="btn btn-primary" value="register">Register</button></center>
-                            <input type="hidden" name ="action" value="register" />
-                        </form>
-                    </div>
-                </div></div> </div>
+                <div class="container">
+                    <form action="Servlet" method="Post">
+                        <div class="form-group">
+                            <label for="Text">First Name:</label>
+                            <input type="text" name="fname"class="form-control"  required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Last Name:</label>
+                            <input type="text" name="lname"class="form-control"  required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" name="email"class="form-control"  required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" name="password" class="form-control"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Phone No.</label>
+                            <input type="text" name="phoneno"class="form-control"  required autofocus>
+                        </div>
 
-
+                        <center> <button type="submit" class="btn btn-primary" value="register">Register</button></center>
+                        <input type="hidden" name ="action" value="register" />
+                    </form>
+                </div>
+            </div></div> </div>
 
 
-
-
-
-
-
-
-
-
-
-
+    <%@include file="footer.jsp" %>
 </body>
-<%@include file="footer.jsp" %>
+
 </html>

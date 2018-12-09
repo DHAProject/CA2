@@ -3,7 +3,10 @@
     Created on : 4 Dec, 2018, 3:32:13 AM
     Author     : Dhruman
 --%>
-
+<%@page import="DTOS.User"%>
+<%@page import="DAOS.UserDAO" %>
+<%@page import="DTOS.Loan"%>
+<%@page import="DAOS.LoanDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

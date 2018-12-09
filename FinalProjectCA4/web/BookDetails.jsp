@@ -4,6 +4,8 @@
     Author     : Andrew
 --%>
 
+<%@page import="Business.Book"%>
+<%@page import="DTOS.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,9 +22,9 @@
             <BR>
             ISBN: <%=b.getBook_isbn()%>
             <BR>
-            Title: <%=b.getBook_Title()%>
+            Title: <%=b.getBook_title()%>
             <BR>
-            Author: <%=b.getBook_Author()%>
+            Author: <%=b.getBook_author()%>
             <BR>
             Publisher: <%=getBook_publisher()%>
             
