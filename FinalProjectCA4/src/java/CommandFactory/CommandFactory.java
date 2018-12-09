@@ -29,6 +29,11 @@ public class CommandFactory {
                     c = new RegisterCommand();
                     break;
                     
+                    case "deleteUser":
+                    // Handle where the user deleted from the database
+                    c = new deleteUserCommand();
+                    break;
+                    
                         case "logout":
                     // Handle where the user wants to login
                     c = new LogoutCommand();
