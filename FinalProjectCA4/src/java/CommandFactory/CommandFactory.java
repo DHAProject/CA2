@@ -42,6 +42,19 @@ public class CommandFactory {
                     // Handle where the user wants to login
                     c = new LoanCommand();
                     break;
+                    
+                    // View books
+                     case "ViewBooks":
+                    c = new ViewBooksCommand();
+                    break;
+                    
+                    // Search for a book
+                     case "SearchBooks":
+                    c = new SearchBooksCommand();
+                    
+                    // Borrow a book
+                     case "BorrowBook":
+                         c = new BorrowBookCommand();
          }
         return c;
     }

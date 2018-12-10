@@ -35,7 +35,7 @@ public class SearchBooksCommand implements Command {
             session.setAttribute("book", book);
 
             // set the next page to be search results page
-            forwardToJsp = "searchResults.jsp";
+            forwardToJsp = "searchBook.jsp";
 
         } else
         {

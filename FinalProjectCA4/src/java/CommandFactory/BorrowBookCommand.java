@@ -35,27 +35,20 @@ public class BorrowBookCommand implements Command{
         if(isbn != null && loanStart != null && !loanStart.equals("") && loanDue != null && !loanDue.equals("")&& loanEnd != null && !loanEnd.equals("")){
             LoanDAO lDao = new LoanDAO("library_system");
             Loan ln = new Loan(isbn, loanStart, loanDue, loanEnd);
-            boolean newId = uDao.registerUser(ur);
+            boolean newId = lDao.insertRowLoan(ln);
             if(newId = true){
-                // Registration was successful, log the user in!
-             User u = uDao.getUserByEmailPassword(email, password);
-                HttpSession session = request.getSession();
-                session.setAttribute("loginUser", u);
                 
-                forwardToJsp = "home.jsp";
+                forwardToJsp = "loan.jsp";
             }else{
-                // The user couldn't be added to the database
-                // Send the user to the error page and inform them of this
-                String errorMessage = "User couldn't be added to the database at this time"
-                        + "Please <a href='register.jsp'>go back</a> and try again.<br/>Try a different username!";
+                // Display error if unable to borrow book
+                String errorMessage = "There was an error borrowing a book! Please try again.";
                 HttpSession session = request.getSession();
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";
             }
         }else{
-            // One or more fields were missing
-            // Send the user to the error page and inform them of this
-            String errorMessage = "One or more fields were missing. Please <a href='register.jsp'>go back</a> and try again.";
+            // send error
+            String errorMessage = "Fields were missing, please try again.";
             HttpSession session = request.getSession();
             session.setAttribute("errorMessage", errorMessage);
             forwardToJsp = "error.jsp";
