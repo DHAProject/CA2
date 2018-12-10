@@ -50,7 +50,7 @@
             </tr>
             <%
                 // Loop to print out all of the rows
-                for (User u : user)
+                for (User l : user)
                 {
             %>
             <!-- Create a row for this user -->
