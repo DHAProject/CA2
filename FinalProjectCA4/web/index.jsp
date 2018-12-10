@@ -51,11 +51,7 @@
 <br>
 
 <!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
+
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-4">

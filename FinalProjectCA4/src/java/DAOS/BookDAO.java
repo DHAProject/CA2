@@ -24,44 +24,8 @@ public class BookDAO extends DAO implements BookDAOInterface {
     }
     
     @Override
-    public List<Book> getAllBooks() {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        List<Book> books = new ArrayList();
-        
-        try {
-            con = getConnection();
-            
-            String query = "Select * from book";
-            ps = con.prepareStatement(query);
-            rs = ps.executeQuery;
-            
-            while(rs.next()) {
-                Book bk1 = new Book(rs.getInt("book_isbn"), rs.getString("book_title"), rs.getString("book_author"), rs.getString("book_publisher"), rs.getString("book_description"), rs.getInt("book_quantity"), rs.getDouble("book_stock"));
-                books.add(bk1);
-            } catch (SQLException e) {
-                    System.out.println("Exception occured in the getAllBooks() method: " + e.getMessage());
-                    } finally {
-                         try {
-                            if (rs != null) {
-                            rs.close();
-                            }
-                            if (ps != null) {
-                            ps.close();
-                            }
-                            if (con != null) {
-                            freeConnection(con);
-                            }
-                            } catch (SQLException e) {
-                            System.out.println("Exception occured in the finally section of the getAllBooks() method: " + e.getMessage());
-                            }  
-                            }
-        }
-        return books;
-    }
-    
-    @Override
+  
+   
     public List<Book> getBookByISBN(String book_isbn) {
         Connection con = null;
         PreparedStatement ps = null;
@@ -289,4 +253,9 @@ public class BookDAO extends DAO implements BookDAOInterface {
             
             return book;
         }
+
+    @Override
+    public List<Book> getAllBooks() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

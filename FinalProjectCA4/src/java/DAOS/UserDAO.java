@@ -437,8 +437,64 @@ public class UserDAO extends DAO implements UserDAOInterface {
         }
         }
 
-    public boolean getUserByUserEmail(String useremail) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public boolean updateUser(User u) {
+       Connection con = null;
+        PreparedStatement ps = null;
+        
+        if(getUserByEmailPassword(u.getUser_email(), u.getUser_password()) == null)
+        {
+           
+        try {
+            con = this.getConnection();
+
+            String query = "UPDATE INTO user(user_fname,user_lname,user_email, user_password, user_phoneno , user_isadmin, user_status) VALUES (?, ?, ?, ?,?,False,True)";
+
+            // Need to get the id back, so have to tell the database to return the id it generates
+            // That is why we include the Statement.RETURN_GENERATED_KEYS parameter
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, u.getUser_fname());
+            ps.setString(2, u.getUser_lname());
+            ps.setString(3, u.getUser_email());
+            ps.setString(4, u.getUser_password());
+            ps.setString(5, u.getUser_phoneno());
+//            ps.setBoolean(6, u.isUser_isadmin());
+//            ps.setBoolean(7, u.isUser_status());
+
+            // Because this is CHANGING the database, use the executeUpdate method
+           ps.execute();
+            } 
+            catch (SQLException e) 
+            {
+                System.err.println("\tA problem occurred during the addUser method:");
+                System.err.println("\t"+e.getMessage());
+            } 
+            finally 
+            {
+                try 
+                {
+                    if (ps != null) 
+                    {
+                        ps.close();
+                    }
+                    if (con != null) 
+                    {
+                        freeConnection(con);
+                    }
+                } 
+                catch (SQLException e) 
+                {
+                    System.err.println("A problem occurred when closing down the addUser method:\n" + e.getMessage());
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
 }
