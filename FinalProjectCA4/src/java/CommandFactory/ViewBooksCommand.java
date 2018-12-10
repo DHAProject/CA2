@@ -5,8 +5,8 @@
  */
 package CommandFactory;
 
-import Business.Book;
-import DAO.BookDAO;
+import DTOS.Book;
+import DAOS.BookDAO;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +20,7 @@ public class ViewBooksCommand implements Command {
     
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
-        BookDAO bookdao = new BookDAO("library");
+        BookDAO bookdao = new BookDAO("library_system");
         List<Book> books = bookdao.getAllBooks();
         HttpSession session = request.getSession();
         session.setAttribute("bookList", books);

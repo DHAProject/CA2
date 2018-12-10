@@ -125,7 +125,7 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Loan{" + "Loan_id=" + loan_id + ", user_id=" + user_id + ", book_isbn=" + book_isbn + ", loan_startdate=" + loan_startdate + ", loan_duedate=" + loan_duedate + ", loan_returningdate=" + loan_returndate + '}';
+        return "Loan{" + "Loan_id=" + loan_id + ", user_id=" + user_id + ", book_isbn=" + book_isbn + ", loan_startdate=" + loan_startdate + ", loan_duedate=" + loan_duedate + ", loan_returndate=" + loan_returndate + '}';
     }
     
 

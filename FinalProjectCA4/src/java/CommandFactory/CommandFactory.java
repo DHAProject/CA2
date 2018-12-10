@@ -42,6 +42,14 @@ public class CommandFactory {
                     // Handle where the user wants to login
                     c = new ViewLoanCommand();
                     break;
+                      case "ViewBooks":
+                    // Handle where the user wants to login
+                    c = new ViewBooksCommand();
+                    break;
+                       case "ViewAllLoan":
+                    // Handle where the user wants to login
+                    c = new ViewAllLoanCommand();
+                    break;
          }
         return c;
     }

@@ -27,7 +27,7 @@ public class ViewLoanCommand implements Command{
        String userid = request.getParameter("userid");
         
        
-       // if(userid != null && !userid.equals(""))
+       //r if(userid != null && !userid.equals(""))
        // {
             LoanDAO lDao = new LoanDAO("library_system");
             List<Loan> u = lDao.getLoanByUserId(userid);

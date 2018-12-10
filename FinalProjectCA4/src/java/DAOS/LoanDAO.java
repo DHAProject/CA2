@@ -36,7 +36,7 @@ public class LoanDAO extends DAO implements LoanInterface {
             con = getConnection();
 
             String query = "Select * from loan where user_id = ?";
-           ps = con.prepareStatement(query);
+            ps = con.prepareStatement(query);
             ps.setInt(1, user_id);
             rs = ps.executeQuery();
 
@@ -68,17 +68,17 @@ public class LoanDAO extends DAO implements LoanInterface {
     }
 
     @Override
-    public boolean insertRowLoan(int Loan_id, int user_id, int book_isbn, Date loan_startdate, Date loan_duedate, Date loan_returningdate) {
+    public boolean insertRowLoan(int Loan_id, int user_id, int book_isbn, Date loan_startdate, Date loan_duedate, Date loan_returndate) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Loan> currentLoans = new ArrayList();
 
-        Loan ln1 = new Loan(Loan_id, user_id, book_isbn, loan_startdate, loan_duedate, loan_returningdate);
+        Loan ln1 = new Loan(Loan_id, user_id, book_isbn, loan_startdate, loan_duedate, loan_returndate);
 
         try {
             con = getConnection();
-            String query = "INSERT INTO Loan VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Loan(loan_id,user_id,book_isbn,loan_startdate,loan_duedate,loan_returndate)VALUES (?, ?, ?, ?, ?, ?)";
             ps = con.prepareStatement(query);
             ps.setInt(1, ln1.getLoan_id());
             ps.setInt(2, ln1.getUser_id());
@@ -168,10 +168,10 @@ public class LoanDAO extends DAO implements LoanInterface {
 
             while (rs.next()) {
                 Loan history = new Loan(rs.getInt("loan_id"), rs.getInt("user_id"), rs.getInt("book_isbn"), rs.getDate("loan_startdate"), rs.getDate("loan_duedate"), rs.getDate("loan_returndate"));
-                loans.add(history);
+               // loans.add(history);
             }
         } catch (SQLException e) {
-            System.out.println("Exception occured in the getAllLoans() method: " + e.getMessage());
+            System.out.println("Exception occured in the getLoanByUserId() method: " + e.getMessage());
         } finally {
             try {
                 if (rs != null) {
@@ -184,7 +184,7 @@ public class LoanDAO extends DAO implements LoanInterface {
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.out.println("Exception occured in the finally section of the getAllLoans() method: " + e.getMessage());
+                System.out.println("Exception occured in the finally section of the getLoanByUserId() method: " + e.getMessage());
             }
         }
 

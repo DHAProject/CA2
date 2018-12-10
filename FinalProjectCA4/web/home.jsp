@@ -46,10 +46,10 @@
                         <a class="nav-link" href="#"> Add Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> View Book</a>
+                        <a class="nav-link" href="Servlet?action=ViewBooks"> View Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Loan</a>
+                        <a class="nav-link" href="Servlet?action=ViewAllLoan">View All Loan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Students</a>
@@ -92,10 +92,10 @@
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">View Book</a>
+                        <a class="nav-link" href="Servlet?action=ViewBooks">View Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Servlet?action=ViewLoanUser" name="ViewLoan">ViewLoan</a>
+                        <a class="nav-link" href="Servlet?action=ViewLoanUser">ViewLoan</a>
                     </li>
 
                 </ul>
@@ -126,6 +126,7 @@
 
 //}
 %>
-<%@include file = "footer.jsp" %>
+
     </body>
+
 </html>

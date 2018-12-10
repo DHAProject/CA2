@@ -4,8 +4,10 @@
     Author     : Andrew
 --%>
 
+<%@page import="java.util.ResourceBundle"%>
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Business.Book"%>
+<%@page import="DTOS.Book"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,7 @@
             // If there is no bundle stored (i.e. if this is the first time you're coming to the site)
             if(dataBundle == null){
                 // Create a resource bundle based on the client's current locale settings
-                dataBundle = ResourceBundle.getBundle("properties.ClassicModels", clientLocale);
+                dataBundle = ResourceBundle.getBundle("properties.library_system");
 
                 // Store this resource bundle for future use
                 session.setAttribute("dataBundle", dataBundle);
