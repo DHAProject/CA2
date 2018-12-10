@@ -34,7 +34,7 @@
         <!-- set up table structure -->
         <table>
             <tr>
-                <th>ID</th>
+                
                 <th>Email</th>
                 <th>Last Name</th>
                 <th>First Name</th>
@@ -48,7 +48,7 @@
             <tr>
                 <!-- Create a cell for each component of this user's information and fill it with 
                      data in this user's object -->
-                <td><%=u.getUser_id()%></td>
+                
                 <!-- Line to generate a tailored link that will go to the view Customer page and pass it the id of the customer to be selected from the database -->
                 <td><a href="viewProfile.jsp?uNum=<%=u.getUser_id()%>"><%=u.getUser_email()%></a></td>
                 <td><%=u.getUser_lname()%></td>
