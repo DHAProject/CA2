@@ -1,9 +1,12 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package DAOS;
+
 
 import DTOS.Book;
 import java.sql.Connection;
@@ -23,14 +26,61 @@ public class BookDAO extends DAO implements BookDAOInterface {
         super(databaseName);
     }
     
-    @Override
-  
    
-    public List<Book> getBookByISBN(String book_isbn) {
+
+    @Override
+    public ArrayList<Book> getAllBooks() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Book> books = new ArrayList();
+        ArrayList<Book> books = new ArrayList();
+        
+        try {
+            con = getConnection();
+            
+            String query = "Select * from book";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                Book b = new Book();
+                
+                b.setBook_isbn(rs.getInt("book_isbn"));
+                b.setBook_title(rs.getString("book_title"));
+                b.setBook_author(rs.getString("book_author"));
+                b.setBook_publisher(rs.getString("book_publisher"));
+                b.setBook_description(rs.getString("book_description"));
+                b.setBook_quantity(rs.getInt("book_quantity"));
+                b.setBook_stock(rs.getDouble("book_stock"));
+                books.add(b);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getAllBooks() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getAllProducts() method: " + e.getMessage());
+            }
+        }
+        
+        return books; }
+    
+    @Override
+    public ArrayList<Book> getBookByISBN(String book_isbn) {
+
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Book> books = new ArrayList();
         
         try {
             con = getConnection();
@@ -59,6 +109,46 @@ public class BookDAO extends DAO implements BookDAOInterface {
                  }
                  } catch (SQLException e) {
                  System.out.println("Exception occured in the finally section of the getAllBooks() method: " + e.getMessage());
+                 }
+        }
+        
+        return books;
+    }
+    
+    @Override
+    public ArrayList<Book> getBookByTitle(String book_title) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Book> books = new ArrayList();
+        
+        try {
+            con = getConnection();
+            
+            String query = "Select * from book where book_title = ?";
+            ps.setString(1, book_title);
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Book bk1 = new Book(rs.getInt("book_isbn"), rs.getString("book_title"), rs.getString("book_author"), rs.getString("book_publisher"), rs.getString("book_description"), rs.getInt("book_quantity"), rs.getDouble("book_stock"));
+                books.add(bk1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getBookByTitle() method: " + e.getMessage());
+        } finally {
+            try {
+                 if (rs != null) {
+                 rs.close();
+                 }
+                 if (ps != null) {
+                 ps.close();
+                 }
+                 if (con != null) {
+                 freeConnection(con);
+                 }
+                 } catch (SQLException e) {
+                 System.out.println("Exception occured in the finally section of the getBookByTitle() method: " + e.getMessage());
                  }
         }
         
@@ -254,8 +344,5 @@ public class BookDAO extends DAO implements BookDAOInterface {
             return book;
         }
 
-    @Override
-    public List<Book> getAllBooks() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
 }

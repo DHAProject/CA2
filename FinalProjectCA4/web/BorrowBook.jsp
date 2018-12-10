@@ -23,38 +23,38 @@
             if (u != null) {
         %>
 
+
         <% } else {
                 out.println("User not found. Please try logging in.");
             }
         %>
 
-        <div class="container">
-            <form>
+<div class="container">
+  <form>
+    
+    <div class="form-group">
+      <label for="userId">User Id</label>
+      <input type="text" class="form-control"  placeholder="Enter User ID">
+    </div>
+    
+    <div class="form-group">
+      <label for="book_isbn">Book ISBN</label>
+      <input type="text" class="form-control" placeholder="Enter Book ISBN">
+    </div>
+      <div class="form-group">
+      <label for="book_title">Title</label>
+      <input type="text" class="form-control" placeholder="Enter Book Title">
+    </div>
+    
+    <div class="form-group">
+      <label for="loan_startdate">Start Date</label>
+      <input type="text" class="form-control" placeholder="Enter today's date" style="width:100%;" size="40">
+    </div>
+      <div class="form-group">
+      <label for="loan_duedate">Due Date</label>
+        <input type="text" class="form-control" placeholder="Enter the date 7 days from now" style="width:100%;" size="40">
+       </div>
 
-                <div class="form-group">
-                    <label for="userId">User Id</label>
-                    <input type="text" class="form-control"  placeholder="Enter User ID">
-                </div>
-
-                <div class="form-group">
-                    <label for="book_isbn">Book ISBN</label>
-                    <input type="text" class="form-control" placeholder="Enter Book ISBN">
-                </div>
-                <div class="form-group">
-                    <label for="book_title">Title</label>
-                    <input type="text" class="form-control" placeholder="Enter Book Title">
-                </div>
-
-                <div class="form-group">
-                    <label for="loan_startdate">Start Date</label>
-                    <input type="text" class="form-control" placeholder="Date" style="width:100%;" size="40">
-                </div>
-                <div class="form-group">
-                    <label for="loan_duedate">Due Date</label>
-                    <input type="text" class="form-control" placeholder="Date" style="width:100%;" size="40">
-                </div>
-
-                <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
     </body>

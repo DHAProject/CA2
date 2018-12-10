@@ -6,14 +6,14 @@
 package DAOS;
 import DTOS.Book;
 import java.util.ArrayList;
-import java.util.List;
 /**
  *
  * @author Andrew
  */
 public interface BookDAOInterface {
-    public List<Book> getAllBooks();
-    public List<Book> getBookByISBN(String book_isbn);
+    public ArrayList<Book> getAllBooks();
+    public ArrayList<Book> getBookByISBN(String book_isbn);
+    public ArrayList<Book> getBookByTitle(String book_title);
     public boolean addNewBook(Book newbook);
     public int changeQuantity(int book_isbn, int book_quantity);
     public int updateBook(int book_isbn, String book_title, String book_author, String book_publisher, String book_description, int book_quantity, double book_stock);
