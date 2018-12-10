@@ -30,6 +30,7 @@
       
         <h1>User list</h1>
         <%
+            User u = (User) session.getAttribute("loginUser");
             UserDAO displayU = new UserDAO("library_system");
             List<User> user = displayU.getAllUsers();
             // If there is a user list to use in the session (and it's not empty)
