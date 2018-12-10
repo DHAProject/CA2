@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Display All Customers</title>
+        <title>Display All Users</title>
     </head>
     <body>
         <a href="index.jsp">Back to index</a>
